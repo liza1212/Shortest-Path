@@ -42,6 +42,6 @@ pear.add_edge(2,4,3);
 pear.add_edge(1,5,3);
 pear.add_edge(5, 3, 1);
 pear.add_edge(3,4,1);
-pear.add_edge(3,2,1);
+pear.add_edge(3,2,5);
 
 console.log(pear);

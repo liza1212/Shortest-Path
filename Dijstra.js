@@ -1,5 +1,5 @@
 let graph, source, destination,tank, max_size, dest_value, edge_weight, relation_short_prev,pq, s_dist_edge_weight
-let distance,nodes
+let distance,nodes, actual_path
 class PriorityQueue{
     constructor(max_size)
     {
@@ -65,6 +65,7 @@ class Dijkstra{
         this.distance={};
         this.nodes=[];  //array
         this.rel_shortest_dist_and_prev={};
+        this.actual_path=[];
         this.pq={}; //Object of key value pair which tells us which node to visit based on the stored minimum value.
         for (var v of this.graph.list_of_Vertices())
         {
@@ -85,20 +86,35 @@ class Dijkstra{
             let node_at_pq=this.pq.dequeue();
             let min_node=node_at_pq.dest_value;
             //let curr_min_weight=node_at_pq.edge_weight;
-            // s_dist_edge_weight=curr_min_weight;
             this.graph.get_edge_of_certain_node(min_node).forEach(chimeki=> //chimeki has weight and value
                 {
                     let temp=chimeki.Weight+this.distance[min_node];
 
                     if(temp<this.distance[chimeki.Value])
                     {   
-                        this.rel_shortest_dist_and_prev[min_node]=chimeki.Value;  
+                        this.rel_shortest_dist_and_prev[chimeki.Value]=min_node;  
                         this.distance[chimeki.Value]=temp;
-                        s_dist_edge_weight=this.distance[chimeki.Value];
+                        this.s_dist_edge_weight=this.distance[chimeki.Value];
                         this.pq.enqueue(chimeki.Value,this.distance[chimeki.Value]);
                     }
                 });     //prev:source
         }
+        let current=this.destination;
+        while(current!=this.source && current!=null)    //   if null than that means there is no path from source to destination
+        {
+            this.actual_path.push({"Node":current,"Weight":this.distance[current]});
+            current=this.rel_shortest_dist_and_prev[current];
+        }
+        this.actual_path.push({"Node":this.source,"Weight":this.distance[this.source]})
+        this.actual_path.reverse();
+    }
+    get_shortest_distance()
+    {
+        return this.s_dist_edge_weight;
+    }
+    get_shortest_path()
+    {
+        return this.actual_path;
     }
 }
 
