@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Node{
     constructor(x, y, val, color) {
         this.x = x;
@@ -30,3 +31,9 @@ class Node{
         return this.val;
     }
 }
+=======
+class nodes
+{
+    
+}
+>>>>>>> 1b59e19 (dijkstra part one)
