@@ -1,14 +1,14 @@
-let no_of_vertices,list_of_node_and_edges,new_node;
-let ser, dest,val;
+// let no_of_vertices,list_of_node_and_edges,new_node;
+// let src, dest,val;
 class graphh{
     constructor()
     {
         this.no_of_vertices=0;
-        this.list_of_node_and_edges= new Map();   // source
+        this.list_of_node_and_edges= new Map();   // source{(1:[dest:val]),(2:[]),(3,[])}
     }
     list_of_Vertices()
     {
-        return this.list_of_node_and_edges.keys();
+        return this.list_of_node_and_edges.keys();//[2,34,45]
     }
     add_node(new_node)
     {
@@ -25,7 +25,7 @@ class graphh{
         console.log('Edge is added')
         console.log(`${src}=>${dest}`);
     }
-    get_edge_of_certain_node(currNode)
+    get_edge_of_certain_node(currNode)//get_edge_ffefefef(2)
     {
         return this.list_of_node_and_edges.get(currNode);
     }
