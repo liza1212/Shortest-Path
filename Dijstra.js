@@ -1,5 +1,5 @@
 let graph, source, destination,tank, max_size, dest_value, edge_weight, relation_short_prev,pq, s_dist_edge_weight
-let distance,nodes, actual_path
+let distance, actual_path
 class PriorityQueue{
     constructor(max_size)
     {
@@ -27,11 +27,11 @@ class PriorityQueue{
         }
         let qElement= new this.Element(dest_value, edge_weight);
         let Added_to_queue=false;
-        for (let i=0;i<this.tank.length;i++)
+        for (let i=0;i<this.tank.length;i++)   // [(2,3),(3,4),(1,8)]    (2,5)
         {
             if (this.tank[i].edge_weight>qElement.edge_weight)
             {
-                this.tank.splice(1,0,qElement);
+                this.tank.splice(1,0,qElement);//[(2,3),(3,4),(2,5),(1,8)] 
                 Added_to_queue=true;
                 break;
             }
@@ -49,7 +49,7 @@ class PriorityQueue{
     }
 }
 PriorityQueue.prototype.Element = class {
-    constructor(dest_value, edge_weight)
+    constructor(dest_value, edge_weight)    
     {
         this.dest_value=dest_value;
         this.edge_weight=edge_weight;
@@ -67,24 +67,26 @@ class Dijkstra{
         this.rel_shortest_dist_and_prev={};
         this.actual_path=[];
         this.pq={}; //Object of key value pair which tells us which node to visit based on the stored minimum value.
-        for (var v of this.graph.list_of_Vertices())
+        for (var v of this.graph.list_of_Vertices()) //[2,35,45] v=2
         {
-            this.nodes.push(v);
+            this.nodes.push(v);     //[2,35,45]
         }
         this.nodes.forEach(nod=>
             {
-                this.distance[nod]=Infinity;
+                this.distance[nod]=Infinity;  
             });
         this.distance[source]=0;
+        
         this.pq=new PriorityQueue(this.nodes.length*this.nodes.length);
+
         this.pq.enqueue(source,0);  //so first ma visit this node, that is the shortest distance.
     }           //pq = next_det , cost_weigth    ()
     shortest_Path_Finder()
     {  
         while(!this.pq.isEmpty())
         {
-            let node_at_pq=this.pq.dequeue();
-            let min_node=node_at_pq.dest_value;
+            let node_at_pq=this.pq.dequeue(); //(1,0)
+            let min_node=node_at_pq.dest_value;//1
             //let curr_min_weight=node_at_pq.edge_weight;
             this.graph.get_edge_of_certain_node(min_node).forEach(chimeki=> //chimeki has weight and value
                 {
@@ -102,8 +104,8 @@ class Dijkstra{
         let current=this.destination;
         while(current!=this.source && current!=null)    //   if null than that means there is no path from source to destination
         {
-            this.actual_path.push({"Node":current,"Weight":this.distance[current]});
-            current=this.rel_shortest_dist_and_prev[current];
+            this.actual_path.push({"Node":current,"Weight":this.distance[current]});//{4,}
+            current=this.rel_shortest_dist_and_prev[current];//current =1
         }
         this.actual_path.push({"Node":this.source,"Weight":this.distance[this.source]})
         this.actual_path.reverse();
