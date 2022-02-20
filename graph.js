@@ -30,18 +30,18 @@ class graphh{
         return this.list_of_node_and_edges.get(currNode);
     }
 }
-let pear=new graphh();
-pear.add_node(1);
-pear.add_node(2);
-pear.add_node(4);
-pear.add_node(5);
-pear.add_node(3);
-pear.add_edge(1,2,7); //1:
-pear.add_edge(2,3,4);
-pear.add_edge(2,4,3);
-pear.add_edge(1,5,3);
-pear.add_edge(5, 3, 1);
-pear.add_edge(3,4,1);
-pear.add_edge(3,2,5);
+// let pear=new graphh();
+// pear.add_node(1);
+// pear.add_node(2);
+// pear.add_node(4);
+// pear.add_node(5);
+// pear.add_node(3);
+// pear.add_edge(1,2,7); //1:
+// pear.add_edge(2,3,4);
+// pear.add_edge(2,4,3);
+// pear.add_edge(1,5,3);
+// pear.add_edge(5, 3, 1);
+// pear.add_edge(3,4,1);
+// pear.add_edge(3,2,5);
 
-console.log(pear);
+// console.log(pear);

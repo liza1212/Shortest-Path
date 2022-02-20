@@ -1,36 +1,39 @@
 body{
-    background-color:orangered;
+    background-color:#1e443d;
 }
 .grid{
     display: grid;
     grid-template-columns: auto auto auto;
     height: 85px;
     align-content: center;
-    background-color: yellow;
-
+    background-color: #82b6aa;
 }
 
 .startbox{
-    background-color: white;
+    background-color: #d7e7d7;
     font-size: 30px;
     text-align: center;
-    border-style: solid;
+    border-style: groove;
     border-width: 2px;
     border-radius: 5px;
 }
 
 .destbox{
-    background-color: white;
+    background-color: #d7e7d7;
     font-size: 30px;
     text-align: center;
-    border-style: solid;
+    border-style:groove;
     border-width: 2px;
     border-radius: 5px;
 }
 
 .calculate{
+    background-color: #d7e7d7;
     font-size: 30px;
-    border-radius: 5px;;
+    text-align: center;
+    border-style:groove;
+    border-width: 2px;
+    border-radius: 5px;
 }
 
 .getNodeBox,.getEdgeBox{

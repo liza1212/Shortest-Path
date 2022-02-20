@@ -12,12 +12,12 @@ class Node{
         return this.y
     }
     display() {
-        strokeWeight(1)
         fill(this.color)
+        noStroke()
         ellipse(this.x, this.y, 50, 50)
         fill(0,0,255)
-        textSize(15)
-        text(this.val, this.x, this.y)
+        textSize(20)
+        text(this.val, this.x-7, this.y+7)
     }
     isPressed() {
         let distance = dist(mouseX, mouseY, this.x, this.y)

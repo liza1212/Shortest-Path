@@ -20,6 +20,7 @@ function setup(){
     grid.child(start)
     startsel = createSelect()
     startsel.attribute('class','startsel')
+    
     start.child(startsel)
 
     dest = createDiv("Destination ")
@@ -33,7 +34,7 @@ function setup(){
     calcbutton= createButton("Calculate")
     calcbutton.attribute('class','calculate')
     grid.child(calcbutton)
-
+    calcbutton.mouseReleased(shortestpath);
     
 
     //input node box with input and two button
@@ -94,9 +95,9 @@ function draw(){
     else{
         if (nodeValue != null) {
             console.log('Node drawn')
-            nodes.push(new Node(getNode.position().x, getNode.position().y, nodeValue, '#28fc03'))
+            nodes.push(new Node(getNode.position().x, getNode.position().y, nodeValue, '#aaae9f'))
             startsel.option(nodes[nodes.length - 1].getValue());
-            destsel.option(nodes[nodes.length - 1].getValue())
+            destsel.option(nodes[nodes.length - 1].getValue());
         }
     }
 
@@ -115,7 +116,6 @@ function draw(){
             edge.display()
         }
     }
-
 }
 
 function addNodeInput(){
@@ -206,5 +206,18 @@ function create(){
     else{
         isNodePressed = false;
     }
+
+}
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight-100);
+  }
+
+function shortestpath()
+{
+    startNode=startsel.option(nodes[nodes.length - 1].getValue());
+    endNode=destsel.option(nodes[nodes.length - 1].getValue())
+    let Dkstra=new Dijkstra(data, startNode, endNode);
+    Dkstra.shortest_Path_Finder();
+    console.log(Dkstra);
 
 }

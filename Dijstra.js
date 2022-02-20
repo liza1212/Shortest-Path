@@ -120,6 +120,6 @@ class Dijkstra{
     }
 }
 
-let fruit=new Dijkstra(pear, 1, 4);
-fruit.shortest_Path_Finder();
-console.log(fruit);
+//let fruit=new Dijkstra(pear, 1, 4);
+//fruit.shortest_Path_Finder();
+//console.log(fruit);
